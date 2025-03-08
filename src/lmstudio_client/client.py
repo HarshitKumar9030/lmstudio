@@ -1,8 +1,18 @@
 import json
 import requests
 import time
-from lmstudio_client.exceptions import LMStudioAPIError, LMStudioInvalidResponseError, LMStudioRequestError
-from lmstudio_client.utils import format_prompt, format_notes
+import sys
+import os
+
+# Fix imports for both package and direct execution
+try:
+    # When running as part of the package
+    from .exceptions import LMStudioAPIError, LMStudioInvalidResponseError, LMStudioRequestError
+    from .utils import format_prompt, format_notes
+except ImportError:
+    # When running directly
+    from lmstudio_client.exceptions import LMStudioAPIError, LMStudioInvalidResponseError, LMStudioRequestError
+    from lmstudio_client.utils import format_prompt, format_notes
 
 class LMStudioClient:
     """Client for interacting with LM Studio's API with an OpenAI-compatible interface."""
